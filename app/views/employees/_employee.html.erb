@@ -1,0 +1,27 @@
+<div id="<%= dom_id employee %>" class="w-7/8 m-5 items-center mx-5 bg-white shadow-lg rounded-lg border-double border-4 border-sky-500">
+  <div class="p-4 text-center">
+    <h2 class="text-xl font-semibold mb-2">Name: <%= employee.name %></h2>
+    <p class="text-gray-700 text-sm">Email: <%= employee.email %></p>
+    <p class="text-gray-700 text-sm">Designation: <%= employee.designation %></p>
+    <p class="text-gray-700 text-sm">Department: <%= employee.department %></p>
+  </div>
+
+<!--  <div class="p-4 text-center">-->
+<!--    <h2 class="text-xl font-semibold mb-2">Department: <%#= employee.department %></h2>-->
+<!--  </div>-->
+
+  <div class="px-4 py-2 px-3 text-center">
+    <ul class="text-gray-700 text-sm bg-gray-100">
+      <li>Up for Lunch: <%= employee.wants_to_go_lunch %></li>
+    </ul>
+  </div>
+
+  <div class="w-full px-4 py-2 px-3 bg-gray-200 text-sm ">
+    <% if action_name != "show" %>
+      <ul class="flex items-center flex-col-2">
+        <li class=" w-1/2 m-5 "><%= link_to "Show this employee", employee, class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-center w-full bg-gray-300 rounded-full" %></li>
+        <li class=" w-1/2 m-5  "><%= link_to 'Edit this employee', edit_employee_path(employee), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-center w-full bg-gray-300 rounded-full" %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

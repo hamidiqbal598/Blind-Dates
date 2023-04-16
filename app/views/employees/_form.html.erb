@@ -1,0 +1,71 @@
+<%= form_with(model: employee, class: "contents") do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :"Name *" %>
+    <%= form.text_field :name, id:"input-field-name", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :email %>
+    <%= form.text_field :email, id:"input-field-email", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :password, class:"block mb-2 text-sm font-medium text-gray-900 dark:text-black" %>
+    <%= form.password_field :password, autocomplete: "new-password", class:"shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+  </div>
+
+<!--  <div class="field mb-6">-->
+<!--    <%#= form.label :password_confirmation, class:"block mb-2 text-sm font-medium text-gray-900 dark:text-black" %><br />-->
+    <%#= form.password_field :password_confirmation, autocomplete: "new-password", class:"shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" %>
+<!--  </div>-->
+
+  <div class="my-5">
+    <%= form.label :department, class: "block font-medium text-gray-700 mb-2" %>
+    <%= form.select :department, options_for_select(DEPARTMENTS), {}, {class: "block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-md shadow-sm leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :"Wants to Go on a Lunch", class: "block font-medium text-gray-700 mb-2" %>
+    <%= form.select :wants_to_go_lunch, options_for_select([true, false]), {}, {class: "block appearance-none w-full bg-gray-100 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded-md shadow-sm leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :designation %>
+    <%= form.text_field :designation, id:"input-field-designation", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit id:"submit-button-up", class: "disabled:bg-gray-400 disabled:text-gray-500 rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var inputFieldName = $('#input-field-name');
+        var submitButton = $('#submit-button-up');
+        inputFieldName.on('input', function() {
+            if ($(this).val() === '') {
+                submitButton.prop('disabled', true);
+            } else {
+                if(inputFieldDesc.val() !== '') {
+                    submitButton.prop('disabled', false);
+                }
+            }
+        });
+    });
+</script>

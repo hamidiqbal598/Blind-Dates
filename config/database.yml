@@ -1,0 +1,27 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+  # If you are not using docker instance then you don't need these below 3 lines
+  # ----------------------------------------------------------------------------
+  #  host: <%= ENV["HOST"] %>
+  #  username: <%= ENV["USERNAME"] %>
+  #  password: <%= ENV["PASSWORD"] %>
+  # ----------------------------------------------------------------------------
+  # Please Comment these above three lines including host, username and password
+
+development:
+  <<: *default
+  database: BlindDates_development
+
+test:
+  <<: *default
+  database: BlindDates_test
+
+production:
+  <<: *default
+  database: BlindDates_production
+  username: BlindDates
+  password: <%= ENV["BLINDDATES_DATABASE_PASSWORD"] %>

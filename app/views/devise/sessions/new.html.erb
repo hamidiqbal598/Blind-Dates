@@ -1,0 +1,43 @@
+<h2 class="text-2xl font-bold text-gray-900 dark:text-black text-center">
+  Sign In
+</h2>
+
+
+<% if params[:role].present? %>
+  <div class="text-center text-bold content-center">
+    <h1 class="text-center">Admin Log in</h1>
+    <h5> I created one dummy admin along with database </h5>
+    <h5> Please use these credentials for Admin Login : </h5>
+    <h5> (Email: 'admin@admin.com' and Password: '12345678')</h5>
+  </div>
+
+<% else %>
+  <h1 class="text-center">User Log in</h1>
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="pl-5 ml-2 pr-4  field">
+    <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-black" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+
+  <div class="pl-5 ml-2 pr-4 field mt-4">
+    <%= f.label :password, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-" %><br />
+    <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field ml-4 pl-5 text-sm pb-5 ">
+      <%#= f.check_box :remember_me, class: "" %>
+      <%#= f.label :remember_me, class: "font-medium text-gray-500 dark:text-gray-400 pb-5" %>
+    </div>
+  <% end %>
+
+  <div class="actions m-10 my-5 m-2 pl-5 pr-4 pl-5 w-3/4 px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+
+
+

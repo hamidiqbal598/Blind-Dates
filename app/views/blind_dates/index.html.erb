@@ -1,0 +1,37 @@
+<div class="w-full h-screen">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between m-4 items-center">
+    <h1 class="font-bold text-4xl">Blind dates</h1>
+    <% if current_employee.role != 'admin' and @last != "past_dates" %>
+      <h2 class="font-bold text-2xl rounded-xl py-3 px-5 bg-blue-600 text-white block font-medium "><%= friday_date %></h2>
+    <% end %>
+  </div>
+
+  <% if @blind_dates.empty? %>
+    <div class="flex items-center justify-center w-full h-3/4 bg-opacity-50">
+      <div class="flex flex-col items-center justify-center w-3/4 h-3/4 bg-white rounded-lg shadow-lg">
+        <h1 class="text-lg mb-5 font-semibold text-gray-800"> No Blind Dates for this Week</h1>
+        <% if current_employee.role == 'admin' and @last != "past_dates" %>
+          <%= link_to "Create Blind Dates", new_blind_date_path, class: "mt-2 m-4 rounded-lg py-3 px-5 bg-blue-700 text-white font-medium" %>
+          <p class="text-sm"> As you're admin you can create a blind date for this week</p>
+        <% else %>
+          <p class="text-sm"> Ask admin to create a blind date for this week</p>
+        <% end %>
+      </div>
+    </div>
+<!--    <div class=" flex items-center justify-center w-3/4 h-3/4 bg-gray-900 bg-opacity-50">-->
+<!--      <div class="flex items-center justify-center w-full h-full bg-white rounded-lg shadow-lg">-->
+<!--        <h2 class="text-lg font-semibold text-gray-800">Warning!</h2>-->
+<!--        <p class="text-gray-600">This is a warning message.</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<% else %>
+    <div id="blind_dates" class="justify-between overflow-x-auto rounded-lg w-full bg-opacity-50">
+      <%= render @blind_dates %>
+    </div>
+  <% end %>
+</div>

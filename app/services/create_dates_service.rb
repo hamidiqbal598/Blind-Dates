@@ -39,7 +39,7 @@ class CreateDatesService
       other_employees.each do |employee|
         EmployeeTeam.create(employee: employee, team: team)
         mail = NotificationMailer.new_notification(@blind_date, employee, leader_employee)
-        mail.deliver_now()
+        # mail.deliver_now()
         employees = employees.reject { |e| e.id == employee.id }
       end
       remaining_count -= 1

@@ -24,6 +24,7 @@ Solution:
 
 * Running instructions:
     * CMD (./bin/dev) (it will load the Tailwind css properly)
+      Heroku-Server Link: https://pure-hamlet-95964.herokuapp.com/
 
 # Run the Rails Application using Docker
 

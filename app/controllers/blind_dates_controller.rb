@@ -8,7 +8,7 @@ class BlindDatesController < ApplicationController
     @last = request.url.to_s.split("/").last
     if @last == "past_dates"
       if current_employee.role == 'admin'
-        @blind_dates = BlindDate.all
+        @blind_dates = BlindDate.all.order(id: :desc)
       else
         @blind_dates = BlindDate.where(teams: current_employee.teams)
       end

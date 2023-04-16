@@ -56,6 +56,6 @@ end
 group :development do
   gem "web-console"
   gem 'pry-rails'
-  gem 'rails-erd'
+  # gem 'rails-erd'
 end
 
